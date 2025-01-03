@@ -1,0 +1,15 @@
+# # Bật Rewrite Engine
+RewriteEngine On
+RewriteBase /
+
+RewriteRule ^home$ index.php?action=home [L]
+
+RewriteRule ^news/([0-9]+)$ index.php?action=news_detail&id=$1 [L]
+
+RewriteRule ^admin$ index.php?action=dashboard [L]
+
+RewriteRule ^admin/news/add$ index.php?action=add_news [L]
+
+RewriteRule ^admin/news/edit/([0-9]+)$ index.php?action=edit_news&id=$1 [L]
+
+RewriteRule ^admin/news/delete/([0-9]+)$ index.php?action=delete_news&id=$1 [L]

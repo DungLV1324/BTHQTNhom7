@@ -1,0 +1,23 @@
+body {
+    background-color: #f4f6f9;
+}
+
+.navbar {
+    background-color: #007bff;
+}
+
+.navbar a {
+    color: white !important;
+}
+
+.navbar a:hover {
+    color: #ffdd57 !important;
+}
+
+.container {
+    margin-top: 30px;
+}
+
+.alert {
+    margin-top: 20px;
+}
