@@ -24,6 +24,7 @@ if (session_status() == PHP_SESSION_NONE) {
 </head>
 
 <body>
+
 <?php
 if (isset($_SESSION['user']) && !isset($_SESSION['success'])) {
     $_SESSION['success'] = 1;
@@ -39,8 +40,30 @@ if (isset($_SESSION['user']) && !isset($_SESSION['success'])) {
     <?php
 }
 ?>
+
+<header class="bg-dark text-white py-3">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+            <h2 class="display-4">Bảng điều khiển sản phẩm</h2>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php?action=home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.php?action=category">Category</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php?action=log-out">Log out</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
 <div class="container">
-    <h2 class="mt-5">Bảng điều khiển sản phẩm</h2>
     <!-- Các nút bấm điều hướng -->
     <div class="mt-4">
         <?php
@@ -50,8 +73,6 @@ if (isset($_SESSION['user']) && !isset($_SESSION['success'])) {
             <?php
         }
         ?>
-        <a href="index.php?controller=btlon&action=home" class="btn btn-secondary mb-3">Trang chủ</a>
-        <a href="index.php?action=log-out" class="btn btn-danger mb-3">Đăng xuất</a>
     </div>
 
     <h3 class="mt-4">Danh sách sản phẩm</h3>
@@ -107,3 +128,4 @@ if (isset($_SESSION['user']) && !isset($_SESSION['success'])) {
 </body>
 
 </html>
+<?php include('./views/admin/sp/partials/footer.php'); ?>

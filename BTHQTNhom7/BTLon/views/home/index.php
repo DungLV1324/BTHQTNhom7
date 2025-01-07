@@ -95,7 +95,7 @@ if (session_status() == PHP_SESSION_NONE) {
                         <div class="card-body">
                             <h5 class="card-title"><?php echo htmlspecialchars($product['TenSanPham']); ?></h5>
                             <p class="card-text text-truncate" style="max-height: 50px;"><?php echo htmlspecialchars($product['DonGia']); ?></p>
-                            <a href="index.php?controller=product&action=detail&id=<?php echo $product['MaSanPham']; ?>" class="btn btn-primary">Mua</a>
+                            <a href="index.php?controller=btlon&action=detail&id=<?php echo $product['MaSanPham']; ?>" class="btn btn-primary">Mua</a>
                         </div>
                     </div>
                 </div>
@@ -112,7 +112,7 @@ if (session_status() == PHP_SESSION_NONE) {
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo htmlspecialchars($product['TenSanPham']); ?></h5>
                                 <p class="card-text text-truncate" style="max-height: 50px;"><?php echo htmlspecialchars($product['DonGia']); ?> <a>VND</a></p>
-                                <a href="index.php?controller=product&action=detail&id=<?php echo $product['MaSanPham']; ?>" class="btn btn-primary">Mua</a>
+                                <a href="index.php?controller=btlon&action=detail&id=<?php echo $product['MaSanPham']; ?>" class="btn btn-primary">Mua</a>
                             </div>
                         </div>
                     </div>

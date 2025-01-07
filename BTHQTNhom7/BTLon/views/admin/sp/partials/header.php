@@ -25,27 +25,27 @@ if (session_status() == PHP_SESSION_NONE) {
 
 <body>
     <!-- header.php -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white py-3">
         <div class="container">
-            <a class="navbar-brand" href="index.php?action=home">Trang chủ</a>
+            <a class="navbar-brand" href="index.php?action=home">Home</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php?action=home">Trang chủ</a>
+                        <a class="nav-link" href="index.php?action=home">Home</a>
                     </li>
                     <?php if (isset($_SESSION['user'])): ?>
                         <li class="nav-item">
                             <a class="nav-link" href="index.php?action=dashboard">Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="index.php?action=log-out">Đăng xuất</a>
+                            <a class="nav-link" href="index.php?action=log-out">Log out</a>
                         </li>
                     <?php else: ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="./views/admin/login.php">Đăng nhập</a>
+                            <a class="nav-link" href="./views/admin/login.php">Log in</a>
                         </li>
                     <?php endif; ?>
                 </ul>

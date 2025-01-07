@@ -34,11 +34,11 @@ class SanPhamController
                     $fileTmpName = $_FILES['uploadedFile']['tmp_name'];
                     $fileSize = $_FILES['uploadedFile']['size'];
                     $fileType = $_FILES['uploadedFile']['type'];
-            
+
                     // Đường dẫn lưu tập tin
                     $uploadDirectory = 'assets/image';
                     $uploadFilePath = $uploadDirectory . basename($fileName);
-            
+
                     // Kiểm tra định dạng tập tin
                     $allowedFileTypes = ['image/jpeg', 'image/png', 'image/gif'];
                     if (in_array($fileType, $allowedFileTypes)) {
@@ -54,14 +54,40 @@ class SanPhamController
                     echo 'Lỗi khi upload tập tin.';
                 }
             }
-            
+
             // Ví dụ: Thêm sản phẩm và chuyển hướng
             $productModel = new SanPham();
             $productModel->addProduct($data);
-            
-            header("Location: index.php?controller=product&action=index");}}
-            
-        
+
+            header("Location: index.php?controller=product&action=index");
+            exit();
+        }
+
+        $categoryModel = new Category();
+        $categories = $categoryModel->getAllCategories();
+        $supplierModel = new NhaCungCap();
+        $suppliers = $supplierModel->getAllSuppliers();
+
+        include 'views/admin/sp/add.php';
+    }
+
+    // Tìm kiếm sản phẩm
+    public function search($keyword = null)
+    {
+        $productModel = new SanPham();
+
+        if ($keyword) {
+            $results = $productModel->searchProducts($keyword);
+            if (empty($results)) {
+                $noResultsMessage = 'Không có kết quả nào phù hợp với từ khóa.';
+            }
+        } else {
+            $results = $productModel->getAllProducts();
+        }
+
+        include 'views/home/index.php';
+    }
+
     // Cập nhật sản phẩm
     public function update($id)
     {
@@ -95,7 +121,7 @@ class SanPhamController
         $supplierModel = new NhaCungCap();
         $suppliers = $supplierModel->getAllSuppliers();
 
-        include 'views/admin/sanpham/edit.php';
+        include 'views/admin/sp/edit.php';
     }
 
     // Xóa sản phẩm

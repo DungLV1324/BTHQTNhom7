@@ -33,6 +33,7 @@ try {
             $controller = new AdminController();
             $controller->dashboard();
             break;
+
         case 'detail':
             if (!isset($_GET['id'])) {
                 echo "ID không hợp lệ";
