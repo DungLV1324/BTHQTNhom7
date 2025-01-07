@@ -58,7 +58,7 @@ if (isset($_SESSION['user']) && !isset($_SESSION['success'])) {
     <table class="table table-bordered mt-3">
         <thead>
         <tr>
-            <th>#</th>
+            <th>STT</th>
             <th>Tên sản phẩm</th>
             <th>Giá</th>
             <th>Kích thước</th>
@@ -72,10 +72,11 @@ if (isset($_SESSION['user']) && !isset($_SESSION['success'])) {
         </tr>
         </thead>
         <tbody>
-        <?php if (isset($news)): ?>
+        <?php if (isset($news) && count($news) > 0): ?>
+            <?php $index = 1; // Khởi tạo số thứ tự ?>
             <?php foreach ($news as $product): ?>
                 <tr>
-                    <td><?= htmlspecialchars($product['MaSanPham']) ?></td>
+                    <td><?= $index++; ?></td> <!-- Tăng $index sau khi hiển thị -->
                     <td><?= htmlspecialchars($product['TenSanPham']) ?></td>
                     <td><?= number_format($product['DonGia'], 0, ',', '.') ?> VND</td>
                     <td><?= htmlspecialchars($product['KichThuoc']) ?></td>
@@ -88,8 +89,8 @@ if (isset($_SESSION['user']) && !isset($_SESSION['success'])) {
                     <td><?= htmlspecialchars($product['DanhMuc']) ?></td>
                     <td><?= htmlspecialchars($product['NhaCungCap']) ?></td>
                     <td>
-                        <a href="index.php?action=edit_product&id=<?= $product['MaSanPham'] ?>" class="btn btn-primary">Sửa</a>
-                        <a href="index.php?action=delete_product&id=<?= $product['MaSanPham'] ?>" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?')">Xóa</a>
+                        <a href="index.php?action=edit_product&id=<?= urlencode($product['MaSanPham']) ?>" class="btn btn-primary">Sửa</a>
+                        <a href="index.php?action=delete_product&id=<?= urlencode($product['MaSanPham']) ?>" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?')">Xóa</a>
                     </td>
                 </tr>
             <?php endforeach; ?>

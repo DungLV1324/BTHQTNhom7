@@ -74,9 +74,31 @@ class SanPham {
     // Xóa sản phẩm
     public function deleteProduct($id)
     {
-        $stmt = $this->pdo->prepare("DELETE FROM SanPham WHERE MaSanPham = ?");
-        $stmt->execute([$id]);
+        try {
+            // Kiểm tra xem sản phẩm có tồn tại không
+            $stmt = $this->pdo->prepare("SELECT COUNT(*) FROM SanPham WHERE MaSanPham = ?");
+            $stmt->execute([$id]);
+            $count = $stmt->fetchColumn();
+
+            if ($count > 0) {
+                // Xóa các chi tiết liên quan nếu có
+                $stmt = $this->pdo->prepare("DELETE FROM ChiTietDonHang WHERE MaSanPham = ?");
+                $stmt->execute([$id]);
+
+                // Xóa sản phẩm
+                $stmt = $this->pdo->prepare("DELETE FROM SanPham WHERE MaSanPham = ?");
+                $stmt->execute([$id]);
+
+                echo "Sản phẩm đã được xóa thành công.";
+            } else {
+                echo "Sản phẩm không tồn tại.";
+            }
+        } catch (PDOException $e) {
+            // Bắt lỗi và xử lý
+            echo "Có lỗi xảy ra: " . $e->getMessage();
+        }
     }
+
 
     // Lấy sản phẩm theo phân trang và danh mục (nếu có)
     public function getProductsByPage($category = null, $offset = 0, $perPage = 5)

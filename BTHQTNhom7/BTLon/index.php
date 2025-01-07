@@ -63,7 +63,7 @@ try {
                 echo "Vui lòng nhập từ khóa tìm kiếm!";
             }
             break;
-        case 'add_news':
+        case 'add_product':
             if ($_SESSION['user']['role'] === 1) {
                 if (!isset($_SESSION['user'])) {
                     header('Location: views/admin/login.php');
@@ -75,25 +75,25 @@ try {
                 echo 'Bạn không phải ADMIN';
             }
             break;
-        case 'edit_news':
+        case 'edit_product':
             if ($_SESSION['user']['role'] === 1) {
                 if (isset($_GET['id'])) {
                     $controller = new SanPhamController();
                     $controller->update($_GET['id']);
                 } else {
-                    echo "ID không hợp lệ";
+                    echo "MaSanPham không hợp lệ";
                 }
             } else {
                 echo 'Bạn không phải ADMIN';
             }
             break;
-        case 'delete_news':
+        case 'delete_product':
             if ($_SESSION['user']['role'] === 1) {
                 if (isset($_GET['id'])) {
                     $controller = new SanPhamController();
                     $controller->delete($_GET['id']);
                 } else {
-                    echo "ID không hợp lệ";
+                    echo "MaSanPham không hợp lệ";
                 }
             } else {
                 echo 'Bạn không phải ADMIN';

@@ -10,7 +10,7 @@ class SanPhamController
     {
         $productModel = new SanPham();
         $product = $productModel->getProductById($id);
-        include 'views/news/detail.php';
+        include 'views/sanpham/detail.php';
     }
 
     // Thêm sản phẩm
@@ -40,7 +40,7 @@ class SanPhamController
         $supplierModel = new NhaCungCap();
         $suppliers = $supplierModel->getAllSuppliers();
 
-        include 'views/admin/news/add.php';
+        include 'views/admin/sanpham/add.php';
     }
 
     // Tìm kiếm sản phẩm
@@ -84,8 +84,7 @@ class SanPhamController
             ];
 
             $productModel->updateProduct($id, $data);
-
-            header("Location: index.php?controller=product&action=detail&id=$id");
+            header("Location: index.php?controller=sanpham&action=detail&id=" . $id);
             exit();
         }
 
@@ -94,7 +93,7 @@ class SanPhamController
         $supplierModel = new NhaCungCap();
         $suppliers = $supplierModel->getAllSuppliers();
 
-        include 'views/admin/news/edit.php';
+        include 'views/admin/sanpham/edit.php';
     }
 
     // Xóa sản phẩm
@@ -102,7 +101,7 @@ class SanPhamController
     {
         $productModel = new SanPham();
         $productModel->deleteProduct($id);
-        header("Location: index.php?controller=product&action=index");
+        header("Location: index.php?controller=home&action=index");
         exit();
     }
 }
