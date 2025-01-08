@@ -8,9 +8,10 @@ class SanPhamController
     // Chi tiết sản phẩm
     public function detail($id)
     {
+
         $productModel = new SanPham();
         $product = $productModel->getProductById($id);
-        include 'views/sanpham/detail.php';
+        include 'views/detail/product.php';
     }
 
     // Thêm sản phẩm
@@ -40,7 +41,7 @@ class SanPhamController
                     $uploadFilePath = $uploadDirectory . basename($fileName);
 
                     // Kiểm tra định dạng tập tin
-                    $allowedFileTypes = ['image/jpeg', 'image/png', 'image/gif'];
+                    $allowedFileTypes = ['image/jpg'];
                     if (in_array($fileType, $allowedFileTypes)) {
                         if (move_uploaded_file($fileTmpName, $uploadFilePath)) {
                             echo 'Tập tin đã được upload thành công!';
@@ -59,7 +60,7 @@ class SanPhamController
             $productModel = new SanPham();
             $productModel->addProduct($data);
 
-            header("Location: index.php?controller=product&action=index");
+            header("Location: index.php?controller=home&action=index");
             exit();
         }
 
@@ -112,7 +113,7 @@ class SanPhamController
             ];
 
             $productModel->updateProduct($id, $data);
-            header("Location: index.php?controller=sanpham&action=detail&id=" . $id);
+            header("Location: index.php?controller=detail&action=index&id=" . $id);
             exit();
         }
 
@@ -129,7 +130,7 @@ class SanPhamController
     {
         $productModel = new SanPham();
         $productModel->deleteProduct($id);
-        header("Location: index.php?controller=home&action=index");
+        header("Location: index.php?controller=admin&action=dashboard");
         exit();
     }
 }

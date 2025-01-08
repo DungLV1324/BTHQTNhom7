@@ -73,7 +73,7 @@ if (session_status() == PHP_SESSION_NONE) {
     <form action="index.php?action=search" method="get" class="form-inline mb-3">
         <input type="text" name="keyword" class="form-control mr-2" placeholder="Tìm kiếm tin tức..."
                value="<?= isset($_GET['keyword']) ? htmlspecialchars($_GET['keyword']) : ''; ?>" required>
-        <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+        <button type="submit" class="btn btn-secondary">Tìm kiếm</button>
     </form>
 
     <!-- Hiển thị kết quả tìm kiếm -->
@@ -91,11 +91,11 @@ if (session_status() == PHP_SESSION_NONE) {
             <?php foreach ($results as $product): ?>
                 <div class="col-md-3 col-sm-6">
                     <div class="card mb-4 shadow-sm">
-                        <img src="assets/image/<?php echo htmlspecialchars($product['HinhAnh']); ?>" class="card-img-top fixed-img" alt="Sản phẩm hình ảnh">
+                        <img src="assets/image/<?php echo htmlspecialchars($product['HinhAnh']); ?>" class="card-img-top fixed-img" alt="Hình ảnh">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo htmlspecialchars($product['TenSanPham']); ?></h5>
                             <p class="card-text text-truncate" style="max-height: 50px;"><?php echo htmlspecialchars($product['DonGia']); ?></p>
-                            <a href="index.php?controller=btlon&action=detail&id=<?php echo $product['MaSanPham']; ?>" class="btn btn-primary">Mua</a>
+                            <a href="index.php?controller=home&action=detail&id=<?php echo urlencode($product['MaSanPham'])?>" class="btn btn-info">Mua</a>
                         </div>
                     </div>
                 </div>
@@ -108,11 +108,11 @@ if (session_status() == PHP_SESSION_NONE) {
                 <?php foreach ($productList as $product): ?>
                     <div class="col-md-3 col-sm-6">
                         <div class="card mb-4 shadow-sm">
-                            <img src="assets/image/<?php echo htmlspecialchars($product['HinhAnh']); ?>" class="card-img-top fixed-img" alt="Sản phẩm hình ảnh">
+                            <img src="assets/image/<?php echo htmlspecialchars($product['HinhAnh']); ?>" class="card-img-top fixed-img" alt="Hình ảnh">
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo htmlspecialchars($product['TenSanPham']); ?></h5>
                                 <p class="card-text text-truncate" style="max-height: 50px;"><?php echo htmlspecialchars($product['DonGia']); ?> <a>VND</a></p>
-                                <a href="index.php?controller=btlon&action=detail&id=<?php echo $product['MaSanPham']; ?>" class="btn btn-primary">Mua</a>
+                                <a href="index.php?controller=home&action=detail&id=<?php echo urlencode($product['MaSanPham'])?>" class="btn btn-info">Mua</a>
                             </div>
                         </div>
                     </div>
@@ -124,10 +124,8 @@ if (session_status() == PHP_SESSION_NONE) {
 
 </div>
 
-<!-- Footer -->
-<footer class="bg-dark text-white text-center py-3 mt-5">
-    <p>&copy; 2024 Tin tức</p>
-</footer>
+<?php include('./views/admin/sp/partials/footer.php'); ?>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

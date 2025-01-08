@@ -7,7 +7,7 @@ if (session_status() == PHP_SESSION_NONE) {
 <?php include('partials/header.php'); ?>
 
 <div class="container mt-5">
-    <h2>Chỉnh sửa Tin tức</h2>
+    <h2>Chỉnh sản phẩm</h2>
     <form action="index.php?action=edit_news&id=<?= $news['id'] ?>" method="POST" enctype="multipart/form-data">
         <div class="mb-3">
             <label for="title" class="form-label">Tiêu đề</label>

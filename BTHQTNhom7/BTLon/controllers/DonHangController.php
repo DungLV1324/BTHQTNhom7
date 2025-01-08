@@ -11,7 +11,7 @@ class DonHangController
     {
         $orderModel = new DonHang();
         $orderDetails = $orderModel->getOrderDetails($id);
-//        include 'views/orders/detail.php';
+//        include 'views/orders/index.php';
     }
 
     // Thêm đơn hàng

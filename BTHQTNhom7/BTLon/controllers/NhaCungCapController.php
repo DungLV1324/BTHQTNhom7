@@ -16,7 +16,7 @@ class NhaCungCapController
     {
         $supplierModel = new NhaCungCap();
         $supplier = $supplierModel->getSupplierById($id);
-        include 'views/nhaCungCap/detail.php';
+        include 'views/nhaCungCap/index.php';
     }
 
     // Thêm nhà cung cấp
