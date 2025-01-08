@@ -108,7 +108,7 @@ CREATE TABLE users
 CREATE TABLE categories
 (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    name      VARCHAR(255) NOT NULL
+    name  VARCHAR(255) NOT NULL
 );
 
 INSERT INTO users (username, password, role)
@@ -135,7 +135,7 @@ VALUES ('Nước hoa nam', 'Dòng nước hoa dành cho nam giới với mùi h�
        ('Nước hoa nữ', 'Dòng nước hoa dành cho nữ giới với mùi hương quyến rũ'),
        ('Nước hoa unisex', 'Dòng nước hoa phù hợp cho cả nam và nữ');
 
-INSERT INTO SanPham (MaDanhMuc, MaNhaCungCap, TenSanPham, DonGia, KichThuoc, MauSac, SoLuong, MuiHuong, TenTheLoai,  HinhAnh)
+INSERT INTO SanPham (MaDanhMuc, MaNhaCungCap, TenSanPham, DonGia, KichThuoc, MauSac, SoLuong, MuiHuong, MaTheLoai,  HinhAnh)
 VALUES (1, 1, 'Dior Sauvage Eau de Parfum', 3500000, '100ml', 'Xanh Đậm', 50, 'Cam Bergamot và tiêu', 1, 'img1.jpg'),
        (2, 2, 'Chanel No.5 Eau de Parfum', 4500000, '100ml', 'Hồng', 40, 'Hoa hồng và hoa nhài', 2, 'img2.jpg'),
        (3, 3, 'Le Labo Santal 33', 5500000, '100ml', 'Trắng', 30, 'Gỗ đàn hương và da thuộc', 1, 'img3.jpg'),
