@@ -84,7 +84,7 @@ if (isset($_SESSION['user']) && !isset($_SESSION['success'])) {
                     <td><?= htmlspecialchars($product['MuiHuong']) ?></td>
                     <td><?= htmlspecialchars($product['SoLuong']) ?></td>
                     <td>
-                        <img src="assets/image/<?php echo htmlspecialchars($product['HinhAnh']); ?>" class="card-img-top fixed-img" alt="Sản phẩm hình ảnh">
+                    <img src="assets/image/<?php echo htmlspecialchars($product['HinhAnh']); ?>" class="card-img-top fixed-img" alt="Sản phẩm hình ảnh" style="width:100px; height:auto;">
                     </td>
                     <td><?= htmlspecialchars($product['DanhMuc']) ?></td>
                     <td><?= htmlspecialchars($product['NhaCungCap']) ?></td>

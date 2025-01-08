@@ -18,48 +18,50 @@ class SanPhamController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $data = [
-                'MaDanhMuc' => $_POST['category_id'],
-                'MaNhaCungCap' => $_POST['supplier_id'],
-                'TenSanPham' => $_POST['name'],
-                'DonGia' => $_POST['price'],
-                'KichThuoc' => $_POST['size'],
-                'MauSac' => $_POST['color'],
-                'MuiHuong' => $_POST['scent'],
-                'SoLuong' => $_POST['quantity'],
+                'MaDanhMuc' => $_POST['MaDanhMuc'],
+                'MaNhaCungCap' => $_POST['MaNhaCungCap'],
+                'TenSanPham' => $_POST['TenSanPham'],
+                'DonGia' => $_POST['DonGia'],
+                'KichThuoc' => $_POST['KichThuoc'],
+                'MauSac' => $_POST['MauSac'],
+                'MuiHuong' => $_POST['MuiHuong'],
+                'SoLuong' => $_POST['SoLuong'],
+                'HinhAnh'      => $_FILES['HinhAnh']
             ];
-
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                if (isset($_FILES['uploadedFile']) && $_FILES['uploadedFile']['error'] == 0) {
+                    $fileName = $_FILES['uploadedFile']['name'];
+                    $fileTmpName = $_FILES['uploadedFile']['tmp_name'];
+                    $fileSize = $_FILES['uploadedFile']['size'];
+                    $fileType = $_FILES['uploadedFile']['type'];
+            
+                    // Đường dẫn lưu tập tin
+                    $uploadDirectory = 'assets/image';
+                    $uploadFilePath = $uploadDirectory . basename($fileName);
+            
+                    // Kiểm tra định dạng tập tin
+                    $allowedFileTypes = ['image/jpeg', 'image/png', 'image/gif'];
+                    if (in_array($fileType, $allowedFileTypes)) {
+                        if (move_uploaded_file($fileTmpName, $uploadFilePath)) {
+                            echo 'Tập tin đã được upload thành công!';
+                        } else {
+                            echo 'Lỗi khi upload tập tin.';
+                        }
+                    } else {
+                        echo 'Định dạng tập tin không hợp lệ.';
+                    }
+                } else {
+                    echo 'Lỗi khi upload tập tin.';
+                }
+            }
+            
+            // Ví dụ: Thêm sản phẩm và chuyển hướng
             $productModel = new SanPham();
             $productModel->addProduct($data);
-
-            header("Location: index.php?controller=product&action=index");
-            exit();
-        }
-
-        $categoryModel = new Category();
-        $categories = $categoryModel->getAllCategories();
-        $supplierModel = new NhaCungCap();
-        $suppliers = $supplierModel->getAllSuppliers();
-
-        include 'views/admin/sanpham/add.php';
-    }
-
-    // Tìm kiếm sản phẩm
-    public function search($keyword = null)
-    {
-        $productModel = new SanPham();
-
-        if ($keyword) {
-            $results = $productModel->searchProducts($keyword);
-            if (empty($results)) {
-                $noResultsMessage = 'Không có kết quả nào phù hợp với từ khóa.';
-            }
-        } else {
-            $results = $productModel->getAllProducts();
-        }
-
-        include 'views/home/index.php';
-    }
-
+            
+            header("Location: index.php?controller=product&action=index");}}
+            
+        
     // Cập nhật sản phẩm
     public function update($id)
     {
