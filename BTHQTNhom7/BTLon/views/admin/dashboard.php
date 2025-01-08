@@ -110,7 +110,7 @@ if (isset($_SESSION['user']) && !isset($_SESSION['success'])) {
                     <td><?= htmlspecialchars($product['DanhMuc']) ?></td>
                     <td><?= htmlspecialchars($product['NhaCungCap']) ?></td>
                     <td>
-                        <a href="index.php?action=edit_product&id=<?= urlencode($product['MaSanPham']) ?>" class="btn btn-primary">Sửa</a>
+                        <a href="#"=<?= urlencode($product['MaSanPham']) ?>" class="btn btn-primary">Sửa</a>
                         <a href="index.php?action=delete_product&id=<?= urlencode($product['MaSanPham']) ?>" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?')">Xóa</a>
                     </td>
                 </tr>
